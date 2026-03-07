@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/diary.png') }}">
+  <title>✦ Hogwarts Forbidden Diary ✦</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&family=IM+Fell+English&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="overlay"></div>
+<div id="sparks"></div>
+
+<!-- Music Button -->
+<button id="musicBtn">🎶</button>
+<audio id="hpMusic" src="{{ url_for('static', filename='audio/harrypotter.mp3') }}"></audio>
+
+<!-- Lock Screen -->
+<div id="lockScreen">
+  <h2>🗝️ This diary is sealed by magic</h2>
+  <input type="password" id="password" placeholder="Enter secret spell">
+  <button type="button" onclick="unlockDiary()">Unlock</button>
+</div>
+
+<!-- ENTIRE DIARY APP WRAPPED CORRECTLY -->
+<div class="diary-container hidden" id="diaryApp">
+
+  <div class="top-bar">
+    <div class="user-info" id="accountInfo">
+        🧙 Loading...
+    </div>
+
+  </div>
+
+  <h1>✦ Hogwarts Forbidden Diary ✦</h1>
+
+  <div class="diary-card torn-paper">
+    <input type="date" id="date">
+    <input type="text" id="title" placeholder="Title of the day...">
+    <textarea id="content" placeholder="Write your secrets... 🪄"></textarea>
+    <button id="addBtn" class="circle-btn add-btn">✍️</button>
+  </div>
+  
+  <div id="entries"></div>
+<button id="logoutBtn" class="circle-btn">🚪</button>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+<script src="{{ url_for('static', filename='magic.js') }}"></script>
+
+</body>
+</html>

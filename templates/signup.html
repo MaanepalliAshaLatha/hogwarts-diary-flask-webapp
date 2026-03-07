@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/diary.png') }}">
+  <title>Sign Up - Hogwarts Diary</title>
+
+  <!-- Magical Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&family=IM+Fell+English&family=Cinzel+Decorative&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="overlay"></div>
+  <div id="sparks"></div>
+
+  <!-- Music & Sounds -->
+  <audio id="magicSound" src="{{ url_for('static', filename='audio/magic_click.mp3') }}"></audio>
+
+  <div class="auth-container">
+    <h1 class="magical-title">✦ Create Your Hogwarts Diary ✦</h1>
+    {% if error %}
+  <div class="magic-error">
+    {{ error }}
+  </div>
+  <audio autoplay src="{{ url_for('static', filename='audio/error_spell.mp3') }}"></audio>
+{% endif %}
+    <form method="POST" class="magic-form">
+      <input type="text" name="username" autocomplete="username" placeholder="Username" required>
+      <input type="password" name="password" autocomplete="new-password" placeholder="Password" required>
+      <input type="password" name="confirm_password" autocomplete="new-password" placeholder="Retype Password" required>
+      <button type="submit" class="enter-btn">Summon Account ✨</button>
+    </form>
+
+    <p class="switch-auth">Already have an account? <a href="/signin">Sign In</a></p>
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+    const sound = document.getElementById("magicSound");
+
+    form.addEventListener("submit", function() {
+        sound.currentTime = 0;
+        sound.play();
+    });
+});
+</script>
+</body>
+</html>
